@@ -5,9 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from "angularfire2/database-deprecated";
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
+import { RegisterPage } from '../pages/register/register';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
 
 @NgModule({

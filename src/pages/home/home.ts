@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
-
+import { Profile } from '../../models/profile';
+import { AngularFireModule } from 'angularfire2';
+// for AngularFireDatabase
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+// for AngularFireAuth
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 /**
  * Generated class for the HomePage page.
  *
@@ -17,9 +22,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class HomePage {
 
+  profileData: FirebaseObjectObservable<Profile>
+
   constructor
   (
   private afAuth: AngularFireAuth,
+  private afDatabase: AngularFireDatabase,
   private toast: ToastController,
   public navCtrl: NavController,
   public navParams: NavParams
@@ -34,6 +42,8 @@ export class HomePage {
     			duration: 3000
     		}).present();
 
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`)
+
     	}
     	else{
     		this.toast.create({
@@ -42,6 +52,11 @@ export class HomePage {
     		}).present();
     	}
     });
+  }
+
+  signout(){
+    this.afAuth.auth.signOut();
+    this.navCtrl.setRoot('LoginPage');
   }
 
 }

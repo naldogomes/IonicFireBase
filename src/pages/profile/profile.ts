@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Profile } from '../../models/profile';
+import { AngularFireModule } from 'angularfire2';
+// for AngularFireDatabase
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -31,7 +36,7 @@ export class ProfilePage {
 
   createProfile(){
   	this.afAuth.authState.take(1).subscribe(auth => {
-  		this.afDatabase.list(`profile/${auth.uid}`).push(this.profile)
+  		this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
       .then(() => this.navCtrl.setRoot('HomePage'));
   	})
   }

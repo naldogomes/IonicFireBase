@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AlertController } from 'ionic-angular';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
 
 @IonicPage()

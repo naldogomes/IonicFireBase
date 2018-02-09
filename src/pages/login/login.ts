@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -15,6 +20,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+var aut;
 export class LoginPage {
 
 	user = {} as User;
@@ -28,17 +34,25 @@ export class LoginPage {
   }
 
   async login(user: User) {
-    try{
-      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if(result){
-        
-          this.navCtrl.setRoot('ProfilePage');
-        
-      }
-    }
-    catch(e){
-      console.error(e);
-    }
+
+
+
+    // this.afAuth.auth.signOut();
+    // try{
+    //   const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+    //   if(result){
+    //       console.log("Entrei")
+    //       //this.navCtrl.setRoot('ProfilePage');
+    //      // console.log(retorno[0]['id'] + ' Ok 1');
+    //   }
+    //   else {
+    //     console.log("Erro")
+    //     this.navCtrl.setRoot('LoginPage');
+    //   }
+    // }
+    // catch(e){
+    //   console.error(e);
+    // }
   }
 
   register() {

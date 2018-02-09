@@ -15,6 +15,10 @@
 
 <ion-content padding>
 
-	
+<p>Nome de usuário: {{(profileData | async)?.username}}</p>
+<p>Primeiro nome: {{(profileData | async)?.firstName}}</p>
+<p>Sobrenome: {{(profileData | async)?.lastName}}</p>
+
+<button ion-button (click)="signout()">SignOut</button>
 
 </ion-content>
